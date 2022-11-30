@@ -13,7 +13,8 @@ export class OrderComponent {
   drinksIntoCart: any[] = [];
   fullArray: boolean = false;
   toggle: boolean = false;
-  color: boolean = false;
+  hamClick!: boolean;
+
 
   constructor(
     private httpClient: HttpClient,
@@ -53,6 +54,8 @@ export class OrderComponent {
   };
 
   clickToOrder(item: any) {
+    item.selected = true;
+
     if (this.fullArray === false) {
       this.drinksIntoCart.push(item);
       this.toggle = true;
@@ -63,6 +66,7 @@ export class OrderComponent {
     if (this.drinksIntoCart.length > 5) {
       this.fullArray = true;
       this.drinksIntoCart.splice(this.drinksIntoCart.length - 1);
+      item.selected = false;
       alert('Non puoi selezionare più di 5 drink!!!');
     }
     this.fullArray = false;
@@ -70,6 +74,7 @@ export class OrderComponent {
 
   removeItem(drink: any) {
     this.drinksIntoCart.splice(this.drinksIntoCart.indexOf(drink), 1);
+    drink.selected = false;
   }
 
   warningCart() {
@@ -78,27 +83,10 @@ export class OrderComponent {
     }
   }
 
-  checkColor(idDrink: any) {
-    console.log(idDrink);
 
-    
-
-  /*
-    const box = document.getElementById('box');
-    console.log(box);
-    
-    
-    if (box != null) {
-      // ✅ Add class
-      box.classList.add('bg-primary');
-    
-  } */
-
-    // 👇️ const box: HTMLElement | null
-  }
-
-  hamClick!: boolean;
-
+  /**
+   * Open menù navbar
+   */
   hamburgerClick(){
     this.hamClick = !this.hamClick;
   }
