@@ -7,8 +7,8 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02" [ngClass] = "{'show' : hamClick}">
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02" [ngClass] = "{'show' : hamClick}" >
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0 d-flex justify-content-evenly align-items-center flex-row">
         <li class="nav-item">
           <a class="nav-link" [routerLink]="'/home'">Home</a>
         </li>
@@ -31,16 +31,16 @@
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="radio" [(ngModel)]="isChecked" [(ngModel)]="typeOfChoice"
             name="typeOfChoice" id="inlineRadio1" value="searchToName">
-          <label class="form-check-label" for="inlineRadio1">Search to name</label>
+          <label class="form-check-label" for="inlineRadio1">Name</label>
         </div>
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="radio" [(ngModel)]="isChecked" [(ngModel)]="typeOfChoice"
             name="typeOfChoice" id="inlineRadio2" value="searchToIngredient">
-          <label class="form-check-label" for="inlineRadio2">Search to ingredients</label>
+          <label class="form-check-label" for="inlineRadio2">Ingredients</label>
         </div>
         <input class="form-control mr-sm-2" type="search" placeholder="Search" [disabled]="isChecked === false"
           [(ngModel)]="inputSearch" name="inputSearch">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="search()">Search</button>
+        <button class="btn btn-outline-success my-2 my-sm-0 d-flex justify-content-end" type="submit" (click)="search()">Search</button>
       </form>
     </div>
   </nav>

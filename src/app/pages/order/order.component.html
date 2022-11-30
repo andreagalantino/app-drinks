@@ -8,7 +8,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngClass] = "{'show' : hamClick}">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav mr-auto d-flex justify-content-evenly align-items-center flex-row">
                 <li class="nav-item active">
                     <a class="nav-link" [routerLink]="'/home'">Home</a>
                 </li>
@@ -18,24 +18,23 @@
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" name="searchNameIng" [(ngModel)]="searchNameIng"
-                    placeholder="Search" aria-label="Search"> <!-- [disabled]="isChecked === false" -->
+                    placeholder="Search" aria-label="Search"> 
                 <button class="btn btn-outline-success my-2 my-sm-0" (click)="searchByName()"
                     type="submit">Search</button>
             </form>
         </div>
     </nav>
 
-    <div class="container-fluid col-12 d-flex flex-row">
+    <div class="container-fluid col-12 d-flex flex-wrap flex-row">
 
         <div class="col-md-4 col-xl-4 col-lg-4">
-            <ul class="list-group">
-                <div class="row">
+            <ul class="list-group fleex-wrap">
+                <div class="row flex-wrap">
                     <li class="list-group-item border-0 col-md-6 col-xl-6 col-lg-6 my-2" *ngFor="let drink of drinks">
-                        <div class="card" (click)="checkColor(drink.idDrink)">
+                        <div class="card">
                             <img role="button" (click)="clickToOrder(drink)" [src]="drink.strDrinkThumb"
                                 class="card-img-top">
-                            <div class="card-body">
-                                <!--[ngClass]="{'bg-white': checkColor === false, 'bg-primary': checkColor === true}"-->
+                                <div class="card-body" [ngClass]="{'bg-white': !drink.selected, 'bg-primary': drink.selected}">
                                 <h5 class="card-title">{{ drink.strDrink}}</h5>
                             </div>
                         </div>
@@ -44,7 +43,7 @@
             </ul>
         </div>
 
-        <section class="h-100 col-md-8 col-xl-8 col-lg-8"
+        <section class="h-100 col-sm-12 col-md-8 col-xl-8 col-lg-8"
             [ngClass]="{'d-none': toggle === false, 'd-flex': toggle===true}">
             <div class="container h-100 py-3">
                 <div class="row d-flex justify-content-center align-items-center h-100 w-100">
